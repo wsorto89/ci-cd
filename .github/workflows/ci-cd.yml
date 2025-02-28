@@ -86,12 +86,12 @@ jobs:
 
     - name: Sanity Check
       run: |
-        ls -la k8s
+        ls -la
 
     - name: Deploy to EKS using kubectl
       run: |
-        kubectl apply -f k8s/deployment.yaml
-        kubectl apply -f k8s/service.yaml
+        kubectl apply -f ./k8s/deployment.yaml
+        kubectl apply -f ./k8s/service.yaml
 
     - name: Verify Deployment Status
       run: |
