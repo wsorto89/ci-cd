@@ -88,9 +88,10 @@ jobs:
         chmod +x kubectl
         sudo mv kubectl /usr/local/bin/kubectl
 
-    - name: Sanity Check
+    - name: Configure kubectl
       run: |
-        ls -la
+        aws eks update-kubeconfig --name my-eks-cluster --region us-east-1
+        kubectl get nodes  # ✅ Sanity check to ensure kubectl is connected to EKS
 
     - name: Deploy to EKS using kubectl
       run: |
