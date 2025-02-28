@@ -84,6 +84,10 @@ jobs:
         chmod +x kubectl
         sudo mv kubectl /usr/local/bin/kubectl
 
+    - name: Sanity Check
+      run: |
+        ls -la k8s
+
     - name: Deploy to EKS using kubectl
       run: |
         kubectl apply -f k8s/deployment.yaml
