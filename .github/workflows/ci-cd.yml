@@ -80,9 +80,10 @@ jobs:
 
     - name: Install kubectl
       run: |
-        curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.29.0/2023-11-07/bin/linux/amd64/kubectl
-        chmod +x ./kubectl
-        sudo mv ./kubectl /usr/local/bin/kubectl
+        KUBECTL_VERSION=$(aws eks describe-cluster --name my-eks-cluster --query "cluster.version" --output text)
+        curl -LO "https://s3.us-west-2.amazonaws.com/amazon-eks/${KUBECTL_VERSION}/2023-11-07/bin/linux/amd64/kubectl"
+        chmod +x kubectl
+        sudo mv kubectl /usr/local/bin/kubectl
 
     - name: Deploy to EKS using kubectl
       run: |
