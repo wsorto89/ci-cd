@@ -28,7 +28,7 @@ jobs:
 
     - name: Log in to Amazon ECR
       run: |
-        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.us-east-1.amazonaws.com
+        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 703674122474.dkr.ecr.us-east-1.amazonaws.com
 
     - name: Build Docker image
       run: |
@@ -36,11 +36,11 @@ jobs:
 
     - name: Tag Docker image
       run: |
-        docker tag my-react-app:latest <aws_account_id>.dkr.ecr.us-east-1.amazonaws.com/my-react-app:latest
+        docker tag my-react-app:latest 703674122474.dkr.ecr.us-east-1.amazonaws.com/my-react-app:latest
 
     - name: Push Docker image to ECR
       run: |
-        docker push <aws_account_id>.dkr.ecr.us-east-1.amazonaws.com/my-react-app:latest
+        docker push 703674122474.dkr.ecr.us-east-1.amazonaws.com/my-react-app:latest
 
   deploy:
     runs-on: ubuntu-latest
